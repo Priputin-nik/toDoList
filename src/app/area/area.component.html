@@ -1,0 +1,10 @@
+<div class="message-container" [ngClass]="{'activeTask': task.condition}" *ngFor="let task of messagesForRender; let index = index">
+<p class="text-message">{{task.text}}</p>
+<button mat-icon-button (click)="activateTask(index)">
+    <mat-icon>done_all</mat-icon>
+</button>
+<button mat-icon-button (click)="method(index)">
+    <mat-icon>close</mat-icon>
+</button>
+</div>
+

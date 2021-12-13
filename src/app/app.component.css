@@ -1,0 +1,8 @@
+:host {
+    
+    width: 100vw;
+    min-height: 100vh;
+    background: url(/assets/img/background.png) center / auto auto repeat; 
+    display: flex;
+    justify-content: center;
+}

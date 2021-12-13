@@ -1,0 +1,37 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+    flex-wrap: nowrap;
+    height: 800px;
+    overflow: scroll;
+}
+
+.text-message {
+    margin-bottom: auto;
+    margin-top: auto;
+    flex-grow: 2;
+}
+
+.message-container:hover {
+    opacity: 1;
+}
+
+.message-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid black;
+    background-color: rgb(228, 228, 151);
+    opacity: 0.6;
+    border-radius: 15px;
+    padding: 5px 5px 5px 15px;
+    word-break: break-all;
+    margin-top: 10px;
+}
+
+.activeTask {
+    background-color: rgb(61, 119, 226);
+    color: white;
+}

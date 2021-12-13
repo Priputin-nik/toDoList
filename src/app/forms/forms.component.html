@@ -1,0 +1,8 @@
+<img src="assets/img/0.png" height="80px" width="80px">
+<div>Введите задачу:</div>
+<div class="form-button">
+    <input type="text" [formControl]="control" (keydown.enter)="submit()">
+    <button mat-icon-button (click)="submit()" [disabled]="control.invalid">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
