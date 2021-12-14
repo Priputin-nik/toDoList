@@ -1,5 +1,11 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
+export enum FilterCondition {
+  done = 'DONE',
+  unDone = 'UNDONE',
+  all = 'ALL'
+}
 @Component({
   selector: 'app-area',
   templateUrl: './area.component.html',
@@ -7,24 +13,47 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class AreaComponent implements OnInit {
   @Input() public messagesForRender: any;
-  @Output() public index: EventEmitter<number>;
-  @Output() public indexActivate: EventEmitter<number>
+  @Output() public taskIdForActivate: EventEmitter<number>;
+  @Output() public taskIdForDelete: EventEmitter<number>;
+  @ViewChild(MatPaginator, {static: true}) private paginator!: MatPaginator;
 
+  public conditions = FilterCondition;
+  public pageSize: number;
+  public pageIndex: number;
+  private _filterCondition: FilterCondition;
 
   constructor() {
-    this.index = new EventEmitter();
-    this.indexActivate = new EventEmitter(); 
+    this.taskIdForActivate = new EventEmitter();
+    this.taskIdForDelete = new EventEmitter();
+
+    this.pageSize = 10; 
+    this.pageIndex = 0;
+    this._filterCondition = FilterCondition.all;
+  }
+
+  get filterCondition(): FilterCondition {
+    return this._filterCondition;
   }
 
   ngOnInit(): void {
   }
 
-  method(numberMessage: number): void {
-    this.index.emit(numberMessage);
+  activateTaskFromId(id: number) {
+    this.taskIdForActivate.emit(id);
   }
 
-  activateTask(numberMessage: number) {
-    this.indexActivate.emit(numberMessage);
+  deleteTaskFromId(id: number) {
+    this.taskIdForDelete.emit(id);
+  }
+
+  changeCondition(condition: FilterCondition) {
+    this._filterCondition = condition;
+  }
+  
+  handlePageEvent(event: PageEvent) {
+    this.pageSize = event.pageSize;
+    this.pageIndex = event.pageIndex;
   }
 
 }
+

@@ -35,3 +35,13 @@
     background-color: rgb(61, 119, 226);
     color: white;
 }
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons button {
+    margin-left: 15px;
+    margin-right: 15px;
+}

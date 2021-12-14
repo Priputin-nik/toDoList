@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { StorageService } from './storage.service';
 import { PaginationComponent } from './pagination/pagination.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { TaskConditionPipe } from './task-condition.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     FormsComponent,
     AreaComponent,
     PaginationComponent,
+    TaskConditionPipe,
   ],
   imports: [
     BrowserModule,

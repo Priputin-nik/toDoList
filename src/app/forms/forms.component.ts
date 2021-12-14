@@ -18,7 +18,7 @@ export class FormsComponent implements OnInit {
     this.task = new EventEmitter();
     this.taskKey = new EventEmitter();
   }
- 
+  
   ngOnInit(): void {
     
   }

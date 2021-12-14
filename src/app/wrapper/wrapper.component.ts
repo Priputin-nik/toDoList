@@ -17,7 +17,6 @@ export class WrapperComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.allMessages = this.storageService.getAllMessage();
-    console.log(this.allMessages);
   }
     
   ngOnDestroy(): void {
@@ -29,17 +28,18 @@ export class WrapperComponent implements OnInit, OnDestroy {
   }
 
   createTask(text: string): ArrayMessage {
-    return {text: text, condition: false}
-  } 
+    return {text: text, condition: false, id: Math.floor(Math.random()*1000000)}
+  }
 
-  deleteTask(index: number): void {
-    this.allMessages.splice(index, 1);
+  activateThrowId(id: number): void {
+    const taskForActivation = this.allMessages.find(item => item.id === id);
+    taskForActivation.condition = !taskForActivation.condition;
     this.storageService.setAllMessage(this.allMessages);
   }
 
-  activateTask(index: number): void {
-    this.allMessages[index].condition = !this.allMessages[index].condition;
+  deleteTrowId(id:number): void {
+    const taskForDelete = this.allMessages.findIndex(item => item.id === id);
+    this.allMessages.splice(taskForDelete,1);
     this.storageService.setAllMessage(this.allMessages);
   }
-
 }
