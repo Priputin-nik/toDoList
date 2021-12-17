@@ -1,11 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 
 @Component({
   selector: 'app-forms',
   templateUrl: './forms.component.html',
-  styleUrls: ['./forms.component.css']
+  styleUrls: ['./forms.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormsComponent implements OnInit {
   @Output()
@@ -28,7 +29,6 @@ export class FormsComponent implements OnInit {
       return
     }
     this.task.emit(this.control.value);
-    
     this.control.setValue('');
   }
 }

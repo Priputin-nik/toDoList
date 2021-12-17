@@ -4,7 +4,7 @@
 <button (click)="changeCondition(conditions.unDone)">Незавершенные</button>
 </div>
 <div class="message-container" [ngClass]="{'activeTask': task.condition}" 
-*ngFor="let task of messagesForRender | taskCondition: filterCondition">
+*ngFor="let task of (messagesForRender | async)! | taskCondition: filterCondition">
 <p class="text-message">{{task.text}}</p>
 <button mat-icon-button  (click)="activateTaskFromId(task.id)">
     <mat-icon>done_all</mat-icon>
@@ -13,7 +13,6 @@
     <mat-icon>close</mat-icon>
 </button>
 </div>
-
-<mat-paginator [length]="messagesForRender.length" [pageSize]="pageSize" 
+<mat-paginator [length]="(messagesForRender | async)?.length" [pageSize]="pageSize" 
 [pageSizeOptions]="[10, 25, 50]" (page)="handlePageEvent($event)">
 </mat-paginator>

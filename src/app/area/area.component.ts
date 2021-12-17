@@ -1,5 +1,7 @@
-import { Component, Input, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { Observable } from 'rxjs';
+import { ArrayMessage } from '../array-message';
 
 export enum FilterCondition {
   done = 'DONE',
@@ -9,10 +11,11 @@ export enum FilterCondition {
 @Component({
   selector: 'app-area',
   templateUrl: './area.component.html',
-  styleUrls: ['./area.component.css']
+  styleUrls: ['./area.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AreaComponent implements OnInit {
-  @Input() public messagesForRender: any;
+  @Input() public messagesForRender!: Observable<ArrayMessage[]>;
   @Output() public taskIdForActivate: EventEmitter<number>;
   @Output() public taskIdForDelete: EventEmitter<number>;
   @ViewChild(MatPaginator, {static: true}) private paginator!: MatPaginator;
@@ -25,7 +28,6 @@ export class AreaComponent implements OnInit {
   constructor() {
     this.taskIdForActivate = new EventEmitter();
     this.taskIdForDelete = new EventEmitter();
-
     this.pageSize = 10; 
     this.pageIndex = 0;
     this._filterCondition = FilterCondition.all;
@@ -55,5 +57,5 @@ export class AreaComponent implements OnInit {
     this.pageIndex = event.pageIndex;
   }
 
+  
 }
-

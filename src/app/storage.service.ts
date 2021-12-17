@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ArrayMessage } from './array-message';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +9,11 @@ export class StorageService {
   constructor() {
    }
 
-  getAllMessage(): string[] {
+  getAllMessage(): ArrayMessage[] {
     return JSON.parse(localStorage.getItem('Message_store') as string) ?? [];
   }
 
-  setAllMessage(arrayMessage: string[]):void {
+  setAllMessage(arrayMessage: ArrayMessage[]):void {
     localStorage.setItem('Message_store', JSON.stringify(arrayMessage)); 
   }
 }

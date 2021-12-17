@@ -12,7 +12,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { StorageService } from './storage.service';
-import { PaginationComponent } from './pagination/pagination.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { TaskConditionPipe } from './task-condition.pipe';
 @NgModule({
@@ -21,7 +20,6 @@ import { TaskConditionPipe } from './task-condition.pipe';
     WrapperComponent,
     FormsComponent,
     AreaComponent,
-    PaginationComponent,
     TaskConditionPipe,
   ],
   imports: [

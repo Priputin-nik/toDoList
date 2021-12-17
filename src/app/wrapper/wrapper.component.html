@@ -1,9 +1,4 @@
-<app-forms (task)="addTask($event)" ></app-forms>
-<!-- <app-area [messagesForRender]="textAllMessage" (index)="deleteTask($event)" (indexActivate)="activateTask($event)"></app-area> -->
-
-<app-area [messagesForRender]="allMessages" 
+<app-forms (task)="addTask($event)"></app-forms>
+<app-area [messagesForRender]="allMessages$" 
 (taskIdForActivate)="activateThrowId($event)"
 (taskIdForDelete)="deleteTrowId($event)"></app-area>
-
-<!-- <app-area [messagesForRender]="allMessages" (index)="deleteTask($event)" 
-(indexActivate)="activateTask($event)"></app-area> -->
